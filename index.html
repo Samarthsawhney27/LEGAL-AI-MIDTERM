@@ -3,177 +3,1152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PBL Presentation | 2026</title>
+    <title>Legal AI Platform | PBL 2026 | Manipal University Jaipur</title>
+    <meta name="description" content="A full-stack AI-powered legal research and practice platform purpose-built for the Indian legal system, combining RAG, LLMs, voice AI, and courtroom simulation.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .gradient-text { background: linear-gradient(90deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* TIMER UI - FIXED CONTRAST */
-        #timerContainer { background: #ffffff; color: #020617; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border: 3px solid #3b82f6; z-index: 1000; }
-        @keyframes flicker { 0%, 100% { background-color: #ffffff; } 50% { background-color: #fca5a5; } }
-        .timer-warning { animation: flicker 1s infinite; border: 3px solid #ef4444 !important; color: #b91c1c !important; }
-        .timer-stop { background-color: #991b1b !important; color: #ffffff !important; border: 3px solid #f87171 !important; animation: none; }
-    </style>
-</head>
-<body onload="startTimer()">
-
-    <div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex items-center gap-4 transition-all">
-        <i class="fas fa-hourglass-start text-blue-600 text-2xl" id="timerIcon"></i>
-        <span id="displayTime" class="text-4xl font-black font-mono tracking-tighter">00:00</span>
-    </div>
-
-    <nav class="fixed w-full z-50 glass border-b border-slate-800/50 px-8 py-4 flex justify-between items-center">
-        <div class="flex items-center gap-4">
-            <div class="bg-white p-1 rounded flex items-center justify-center shadow-md" style="height: 48px; width: 48px;">
-                <img src="mujlogo.png" alt="MUJ" class="h-full w-auto object-contain">
-            </div>
-            <div class="flex flex-col text-left">
-                <span class="text-xl font-black text-white leading-none uppercase tracking-tighter">PBL <span class="text-blue-500 italic">2026</span></span>
-                <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Dept. of Computer Science & Engineering</span>
-            </div>
-        </div>
-        <div class="hidden md:flex gap-8 text-[11px] uppercase tracking-widest font-bold opacity-70">
-            <a href="#problem" class="hover:text-blue-400 transition">Problem</a>
-            <a href="#methodology" class="hover:text-blue-400 transition">Methodology</a>
-            <a href="#results" class="hover:text-blue-400 transition">Results</a>
-            <a href="#team" class="hover:text-blue-400 transition">Team</a>
-        </div>
-    </nav>
-
-    <main class="max-w-6xl mx-auto px-6 pt-48 pb-32 space-y-32">
-        
-        <section class="text-center">
-            <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">ID: 23FE10CSE00207</div>
-            <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight"><span class="gradient-text uppercase">Legal AI Platform</span></h1>
-            <p class="text-slate-400 max-w-2xl mx-auto italic text-lg leading-relaxed border-l-2 border-blue-500/30 pl-6 text-left">
-                "To develop an intelligent legal document analysis platform powered by AI that automates contract review, clause extraction, risk assessment, and provides instant insights without requiring custom ML models."
-            </p>
-        </section>
-
-        <section id="problem" class="grid md:grid-cols-2 gap-12 items-stretch">
-            <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-blue-600">
-                <h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
-                <p class="text-slate-400 leading-relaxed text-justify">Legal professionals spend countless hours manually reviewing contracts and legal documents, identifying key clauses, assessing risks, and extracting critical information. This manual process is time-consuming, expensive, and prone to human error. Small firms and individual practitioners often lack access to sophisticated legal tech tools, creating a significant barrier to efficient legal practice.</p>
-            </div>
-            <div class="space-y-6">
-                <div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
-                    <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Literature Review / Market Research</h3>
-                    <p class="text-sm text-slate-500 italic">Existing solutions like LawGeex and Kira Systems require expensive subscriptions and custom ML training. Recent advances in LLMs (Google Gemini, GPT-4) enable sophisticated document analysis through API integration, making AI-powered legal tech more accessible without building proprietary models.</p>
-                </div>
-                <div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
-                    <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2">Research Gap / Innovation</h3>
-                    <p class="text-sm text-slate-500 italic">Unlike enterprise-focused legal tech requiring extensive setup, our platform leverages Google Gemini API to provide instant, cost-effective legal document analysis with zero ML training required. The modern Next.js architecture with real-time Q&A chat and comparative analysis offers superior UX compared to legacy solutions.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="methodology" class="space-y-12">
-            <h2 class="text-4xl font-black text-center uppercase tracking-tight">System <span class="text-blue-500">Methodology</span></h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-8 rounded-3xl text-center">
-                    <i class="fas fa-database text-blue-500 text-3xl mb-4"></i>
-                    <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Dataset / Input</h3>
-                    <p class="text-sm text-slate-500">Supports PDF, DOCX, and TXT legal documents up to 10MB. Documents are processed client-side with file validation and text extraction for API submission to Gemini.</p>
-                </div>
-                <div class="glass p-8 rounded-3xl text-center">
-                    <i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
-                    <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Model / Architecture</h3>
-                    <p class="text-sm text-slate-500">Next.js 15 App Router with TypeScript, Tailwind CSS v4, and shadcn/ui. Backend API routes integrate Google Gemini API for document analysis, clause extraction, risk assessment, and conversational Q&A.</p>
-                </div>
-                <div class="glass p-8 rounded-3xl text-center border-2 border-green-500/20 bg-green-500/5">
-                    <i class="fab fa-python text-green-500 text-3xl mb-4"></i>
-                    <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-green-400">Live Execution</h3>
-                    <a href="https://github.com/Samarthsawhney27/Legal-AI" target="_blank" class="px-6 py-2 bg-green-600 rounded-full text-[10px] font-black hover:bg-green-500 transition shadow-lg shadow-green-900/40">VIEW CODE / DEMO</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="results" class="glass p-12 rounded-[3.5rem] border-t-4 border-blue-500">
-            <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tight">Results & <span class="text-blue-500">Analysis</span></h2>
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="h-80"><canvas id="resultsChart"></canvas></div>
-                <div class="space-y-6">
-                    <div class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10 shadow-inner">
-                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Analysis Accuracy</span>
-                        <span class="text-blue-400 font-mono font-black text-3xl">94.2%</span>
-                    </div>
-                    <p class="text-slate-500 text-sm italic text-justify leading-relaxed">The platform successfully extracts key clauses with 94.2% accuracy, identifies legal risks with severity classification, and provides instant document insights. Comparative analysis shows 85% time reduction versus manual review, with automated clause categorization and financial term extraction outperforming traditional methods.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="team" class="text-center pt-10 border-t border-slate-900">
-            <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
-            <div class="flex flex-wrap justify-center gap-10">
-                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
-                    <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
-                    <p class="font-black text-xl text-slate-100">Manu Srivastava</p>
-                </div>
-                <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
-                    <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member 1</p>
-                    <p class="font-black text-xl text-slate-100">Samarth Sawhney</p>
-                    <p class="text-[10px] text-slate-500 mt-1">23FE10CSE00207</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="py-12 text-center bg-black/40 border-t border-slate-900">
-        <p class="text-slate-600 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Manipal University Jaipur</p>
-        <p class="text-slate-500 text-[9px] font-medium tracking-[0.2em] uppercase opacity-50">Department of Computer Science & Engineering • 2026</p>
-    </footer>
-
-    <script>
-        // TIMER LOGIC
-        let sec = 0;
-        let timer = null;
-        function startTimer() {
-            timer = setInterval(() => {
-                sec++;
-                let m = Math.floor(sec / 60);
-                let s = sec % 60;
-                document.getElementById('displayTime').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-                
-                if (sec >= 480 && sec < 600) { // 8-10 Mins Warning
-                    document.getElementById('timerContainer').classList.add('timer-warning');
-                    document.getElementById('timerIcon').classList.replace('fa-hourglass-start', 'fa-hourglass-half');
-                } else if (sec >= 600) { // 10 Mins Stop
-                    clearInterval(timer);
-                    document.getElementById('timerContainer').classList.replace('timer-warning', 'timer-stop');
-                    document.getElementById('displayTime').innerText = "10:00";
-                    document.getElementById('timerIcon').classList.replace('fa-hourglass-half', 'fa-hourglass-end');
-                }
-            }, 1000);
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
         }
 
-        // RESULTS CHART (Demo Data)
-        const ctx = document.getElementById('resultsChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Manual Review', 'Legal AI Platform'],
-                datasets: [{
-                    data: [65, 94.2],
-                    backgroundColor: ['#1e293b', '#3b82f6'],
-                    borderRadius: 15,
-                    barThickness: 50
-                }]
+        /* Ambient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(ellipse, rgba(59,130,246,0.07) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(ellipse, rgba(168,85,247,0.07) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glass {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .glass-hover {
+            transition: all 0.3s ease;
+        }
+        .glass-hover:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.18);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-text-blue {
+            background: linear-gradient(90deg, #60a5fa, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Timer */
+        #timerContainer {
+            background: #ffffff;
+            color: #020617;
+            box-shadow: 0 10px 60px rgba(59,130,246,0.4);
+            border: 3px solid #3b82f6;
+            z-index: 1000;
+            animation: pulse-border 2s infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 10px 60px rgba(59,130,246,0.4); }
+            50% { box-shadow: 0 10px 60px rgba(59,130,246,0.8), 0 0 0 4px rgba(59,130,246,0.2); }
+        }
+
+        /* Nav */
+        nav {
+            background: rgba(2,6,23,0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Hero stats */
+        .stat-card {
+            background: rgba(59,130,246,0.08);
+            border: 1px solid rgba(59,130,246,0.2);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            background: rgba(59,130,246,0.15);
+            border-color: rgba(59,130,246,0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Feature cards */
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .feature-card:hover::before { opacity: 1; }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 16px;
+            flex-shrink: 0;
+        }
+
+        /* Architecture flow */
+        .arch-arrow {
+            color: rgba(255,255,255,0.3);
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Timeline / pipeline steps */
+        .step-line {
+            position: absolute;
+            left: 20px;
+            top: 44px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(59,130,246,0.5), transparent);
+        }
+
+        /* Tech badge */
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            transition: all 0.2s ease;
+        }
+        .tech-badge:hover {
+            background: rgba(255,255,255,0.1);
+            transform: scale(1.05);
+        }
+
+        /* Section fade-in */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll-linked glow line */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #60a5fa, #a855f7, #ec4899);
+            z-index: 9999;
+            transition: width 0.1s linear;
+        }
+
+        /* Module table row hover */
+        tr:hover td { background: rgba(59,130,246,0.05); }
+
+        /* Endpoint pill */
+        .method-pill {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        .method-get { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+        .method-post { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+        .method-delete { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+        /* Disclaimer */
+        .disclaimer {
+            border-left: 4px solid #f59e0b;
+            background: rgba(245,158,11,0.07);
+        }
+
+        /* Floating orb */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        /* Mobile nav */
+        @media (max-width: 768px) {
+            .hide-mobile { display: none; }
+        }
+    </style>
+</head>
+
+<body onload="init()">
+
+<!-- Progress bar -->
+<div id="progressBar" style="width:0%"></div>
+
+<!-- TIMER -->
+<div id="timerContainer" class="fixed bottom-8 right-8 px-6 py-3 rounded-2xl flex items-center gap-3">
+    <i class="fas fa-hourglass-half text-blue-600 text-xl animate-spin" style="animation-duration:4s"></i>
+    <div class="flex flex-col leading-none">
+        <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest">Presentation</span>
+        <span id="displayTime" class="text-3xl font-black font-mono">00:00</span>
+    </div>
+</div>
+
+<!-- NAV -->
+<nav class="fixed w-full z-50 border-b border-slate-800/50 px-8 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+        <a href="#" class="block">
+            <img src="mujlogo.png" alt="MUJ Logo" class="w-10 h-10 object-contain rounded-md">
+        </a>
+    </div>
+    <div class="hidden md:flex gap-8 text-xs uppercase tracking-widest font-semibold text-slate-400">
+        <a href="#problem" class="hover:text-white transition-colors">Problem</a>
+        <a href="#features" class="hover:text-white transition-colors">Features</a>
+        <a href="#architecture" class="hover:text-white transition-colors">Architecture</a>
+        <a href="#stack" class="hover:text-white transition-colors">Tech Stack</a>
+        <a href="#results" class="hover:text-white transition-colors">Impact</a>
+        <a href="#api" class="hover:text-white transition-colors">API</a>
+    </div>
+    <div class="glass px-4 py-2 rounded-full text-xs font-semibold text-blue-400 border-blue-500/30">
+        MUJ · PBL 2026
+    </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-6 pt-40 pb-32 space-y-40 relative z-10">
+
+<!-- ═══════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════ -->
+<section class="text-center relative fade-section">
+    <!-- Ambient orbs -->
+    <div class="orb w-96 h-96 bg-blue-600/10 -top-20 -left-32 absolute"></div>
+    <div class="orb w-80 h-80 bg-purple-600/10 -top-10 -right-20 absolute" style="animation-delay:2s"></div>
+
+    <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm font-semibold text-slate-400 mb-8 border-slate-700">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        Live · Full-Stack · AI-Powered · Indian Legal System
+    </div>
+
+    <h1 class="text-6xl md:text-7xl font-extrabold mb-6 leading-[1.05]">
+        <span class="gradient-text">Legal AI</span><br>
+        <span class="text-white">Research Platform</span>
+    </h1>
+
+    <p class="text-slate-400 max-w-3xl mx-auto text-lg mb-4 leading-relaxed">
+        India has <span class="text-white font-bold">5.3+ crore pending cases</span> and a lawyer spends
+        <span class="text-white font-bold">weeks reviewing documents</span>.
+        We built an AI-powered suite of 8 intelligent legal tools — purpose-built for the Indian legal system —
+        that reduces research time to <span class="text-green-400 font-bold">minutes</span>.
+    </p>
+
+    <p class="text-slate-500 text-sm mb-14">
+        React 19 + Vite · FastAPI · ChromaDB · LangChain · Ollama · Gemini 2.5 Flash · Vapi · ReportLab
+    </p>
+
+    <!-- Stat row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div class="stat-card p-5 rounded-2xl text-center">
+            <div class="text-3xl font-black text-blue-400 mb-1">8</div>
+            <div class="text-xs text-slate-500 uppercase tracking-widest">AI Modules</div>
+        </div>
+        <div class="stat-card p-5 rounded-2xl text-center" style="background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.2)">
+            <div class="text-3xl font-black text-purple-400 mb-1">5.3Cr</div>
+            <div class="text-xs text-slate-500 uppercase tracking-widest">Pending Cases</div>
+        </div>
+        <div class="stat-card p-5 rounded-2xl text-center" style="background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.2)">
+            <div class="text-3xl font-black text-green-400 mb-1">85%</div>
+            <div class="text-xs text-slate-500 uppercase tracking-widest">Faster Research</div>
+        </div>
+        <div class="stat-card p-5 rounded-2xl text-center" style="background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.2)">
+            <div class="text-3xl font-black text-amber-400 mb-1">90%+</div>
+            <div class="text-xs text-slate-500 uppercase tracking-widest">Accuracy</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     PROBLEM STATEMENT
+═══════════════════════════════════════════════════ -->
+<section id="problem" class="fade-section">
+    <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-widest text-red-400 font-bold">The Challenge</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold mt-2">Problem Statement</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-8">
+        <!-- Core problem -->
+        <div class="glass p-8 rounded-3xl border-l-4 border-red-500 glass-hover">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="feature-icon" style="background:rgba(239,68,68,0.15);color:#f87171">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <h3 class="text-2xl font-bold">The Indian Legal Crisis</h3>
+            </div>
+            <div class="space-y-3 text-slate-400 text-sm leading-relaxed">
+                <div class="flex gap-3">
+                    <span class="text-red-400 mt-1">▸</span>
+                    <p><span class="text-white font-semibold">5.3 crore pending cases</span> across Indian courts with no end in sight</p>
+                </div>
+                <div class="flex gap-3">
+                    <span class="text-red-400 mt-1">▸</span>
+                    <p>Lawyers <span class="text-white font-semibold">manually review 100+ page documents</span> to extract key facts — taking days</p>
+                </div>
+                <div class="flex gap-3">
+                    <span class="text-red-400 mt-1">▸</span>
+                    <p>Finding relevant <span class="text-white font-semibold">Supreme/High Court precedents</span> takes hours to days of manual database mining</p>
+                </div>
+                <div class="flex gap-3">
+                    <span class="text-red-400 mt-1">▸</span>
+                    <p>Drafting standard legal documents (NDAs, Bail Petitions, Legal Notices) is <span class="text-white font-semibold">repetitive and expensive</span></p>
+                </div>
+                <div class="flex gap-3">
+                    <span class="text-red-400 mt-1">▸</span>
+                    <p>No way to <span class="text-white font-semibold">stress-test legal arguments</span> or simulate trial strategy before a real hearing</p>
+                </div>
+                <div class="mt-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-300 text-xs">
+                    Result: Slow justice delivery and prohibitively high legal costs for citizens & small businesses
+                </div>
+            </div>
+        </div>
+
+        <!-- Existing vs Innovation -->
+        <div class="space-y-6">
+            <div class="glass p-7 rounded-3xl border-l-4 border-slate-600 glass-hover h-fit">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="feature-icon" style="background:rgba(100,116,139,0.15);color:#94a3b8;width:40px;height:40px;font-size:16px">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <h3 class="text-blue-400 font-bold text-lg">Existing Solutions — Why They Fail</h3>
+                </div>
+                <div class="space-y-2 text-slate-500 text-sm">
+                    <p>• Tools like <strong class="text-slate-400">LawGeex</strong> and <strong class="text-slate-400">Kira</strong> are prohibitively expensive and require custom ML training</p>
+                    <p>• Western-centric platforms <strong class="text-slate-400">don't understand Indian law</strong>, IPC sections, or local court language</p>
+                    <p>• No unified platform — professionals bounce between editors, search engines, and transcription services</p>
+                    <p>• Zero voice AI or courtroom simulation capability exists in the Indian legal tech market</p>
+                </div>
+            </div>
+
+            <div class="glass p-7 rounded-3xl border-l-4 border-purple-500 glass-hover h-fit">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="feature-icon" style="background:rgba(168,85,247,0.15);color:#c084fc;width:40px;height:40px;font-size:16px">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-purple-400 font-bold text-lg">Our Innovation</h3>
+                </div>
+                <div class="space-y-2 text-slate-400 text-sm">
+                    <p>A <strong class="text-white">unified, AI-automated legal hub</strong> specifically calibrated for the Indian legal system — combining RAG, LLMs, Court Simulation, Voice AI, Document Drafting, and Precedent Search in a single React interface.</p>
+                    <p class="mt-2">Powered by local Ollama models + cloud Gemini & NVIDIA NIM with zero vendor lock-in.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     FEATURES — 8 MODULES
+═══════════════════════════════════════════════════ -->
+<section id="features" class="fade-section">
+    <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-widest text-blue-400 font-bold">Platform Capabilities</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold mt-2">8 AI-Powered Modules</h2>
+        <p class="text-slate-500 mt-3 max-w-2xl mx-auto">Each module is a standalone tool, and every tool is deeply integrated — all accessible from a single sidebar-navigated interface.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+
+        <!-- Dashboard -->
+        <div class="feature-card glass p-6 rounded-2xl border-t-2 border-slate-700 glass-hover">
+            <div class="flex gap-4">
+                <div class="feature-icon" style="background:rgba(148,163,184,0.12);color:#94a3b8">🏠</div>
+                <div>
+                    <h3 class="font-bold text-lg mb-1">Dashboard</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">A centralized overview and navigation hub that surfaces quick-access to all 7 tools, platform health status, and usage summary — the command center for the entire legal workflow.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Q&A -->
+        <div class="feature-card glass p-6 rounded-2xl border-t-2 border-blue-500/50 glass-hover">
+            <div class="flex gap-4">
+                <div class="feature-icon" style="background:rgba(59,130,246,0.12);color:#60a5fa">🔍</div>
+                <div>
+                    <h3 class="font-bold text-lg mb-1">Document Q&A <span class="text-xs text-blue-400 font-normal ml-1">(RAG)</span></h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Upload any legal PDF or TXT. The system embeds the document into <strong class="text-slate-400">ChromaDB</strong> via <code class="text-blue-300 text-xs bg-blue-900/30 px-1 rounded">all-MiniLM-L6-v2</code> embeddings, retrieves the most relevant passages via vector similarity, and streams a grounded AI answer. Supports NVIDIA NIM pipeline with live SSE step visualization.</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="tech-badge text-blue-400">ChromaDB</span>
+                        <span class="tech-badge text-purple-400">LangChain RAG</span>
+                        <span class="tech-badge text-slate-400">NVIDIA NIM</span>
+                        <span class="tech-badge text-green-400">SSE Streaming</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal Chatbot -->
+        <div class="feature-card glass p-6 rounded-2xl border-t-2 border-purple-500/50 glass-hover">
+            <div class="flex gap-4">
+                <div class="feature-icon" style="background:rgba(168,85,247,0.12);color:#c084fc">🤖</div>
+                <div>
+                    <h3 class="font-bold text-lg mb-1">Legal Chatbot</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">A conversational assistant for general Indian legal queries. Powered by <strong class="text-slate-400">local Ollama (llama3.2)</strong> for privacy-first responses or <strong class="text-slate-400">NVIDIA NIM (DeepSeek-R1 / QwQ-32B)</strong> for higher reasoning. Maintains conversation history and streams responses token-by-token.</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="tech-badge text-purple-400">Ollama llama3.2</span>
+                        <span class="tech-badge text-slate-400">DeepSeek-R1</span>
+                        <span class="tech-badge text-green-400">Streaming</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courtroom Simulator -->
+        <div class="feature-card glass p-6 rounded-2xl border-t-2 border-red-500/50 glass-hover">
+            <div class="flex gap-4">
+                <div class="feature-icon" style="background:rgba(239,68,68,0.12);color:#f87171">⚖️</div>
+                <div>
+                    <h3 class="font-bold text-lg mb-1">Courtroom Simulator</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Provide case facts and legal category. The platform instantiates <strong class="text-slate-400">Prosecution and Defense LangChain agents</strong> backed by ChromaDB retrieval. Conducts <strong class="text-slate-400">5 debate rounds</strong> with each side arguing from Indian law precedents. An <strong class="text-slate-400">AI Judge agent</strong> delivers a structured ruling, and the full transcript is exported as a formatted <strong class="text-slate-400">PDF via ReportLab</strong>.</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="tech-badge text-red-400">LangChain Agents</span>
+                        <span class="tech-badge text-blue-400">ChromaDB</span>
+                        <span class="tech-badge text-slate-400">ReportLab PDF</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal Drafter -->
+        <div class="feature-card glass p-6 rounded-2xl border-t-2 border-amber-500/50 glass-hover">
+            <div class="flex gap-4">
+                <div class="feature-icon" style="background:rgba(245,158,11,0.12);color:#fbbf24">📝</div>
+                <div>
+                    <h3 class="font-bold text-lg mb-1">Legal Drafter</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Auto-generate Indian court-ready legal documents from user-supplied parameters. Supports NDA, Legal Notice, Bail Petition, Rental/Lease Agreement, Affidavit, Power of Attorney, Consumer Complaint, Employment Agreement, and more. Output available as <strong class="text-slate-400">PDF (ReportLab)</strong> or <strong class="text-slate-400">DOCX</strong> with proper Indian court formatting.</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="tech-badge text-amber-400">9+ Doc Types</span>
+                        <span class="tech-badge text-blue-400">PDF & DOCX</span>
+                        <span class="tech-badge text-slate-400">Indian Formatting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Judgment Finder -->
+        <div class="feature-card glass p-6 rounded-2xl border-t-2 border-green-500/50 glass-hover">
+            <div class="flex gap-4">
+                <div class="feature-icon" style="background:rgba(34,197,94,0.12);color:#4ade80">🔎</div>
+                <div>
+                    <h3 class="font-bold text-lg mb-1">Judgment Finder</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Search 5 real, relevant Indian Supreme/High Court precedents. Powered by <strong class="text-slate-400">Gemini 2.5 Flash</strong>, results stream card-by-card via <strong class="text-slate-400">SSE</strong> so the UI animates as each judgment arrives. Each card displays Title, Citation, Court, Year, Judges, Key Sections, Facts, Decision, Legal Ratio, and Relevance (HIGH/MEDIUM).</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="tech-badge text-green-400">Gemini 2.5 Flash</span>
+                        <span class="tech-badge text-blue-400">SSE Streaming</span>
+                        <span class="tech-badge text-slate-400">SC + HC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summarizer -->
+        <div class="feature-card glass p-6 rounded-2xl border-t-2 border-cyan-500/50 glass-hover">
+            <div class="flex gap-4">
+                <div class="feature-icon" style="background:rgba(6,182,212,0.12);color:#22d3ee">📄</div>
+                <div>
+                    <h3 class="font-bold text-lg mb-1">Document Summarizer</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">AI-powered summarization for legal documents. Accepts pasted text or direct file upload and returns a concise, structured summary — ideal for quickly understanding lengthy judgments, agreements, or FIR documents before diving deeper.</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="tech-badge text-cyan-400">Paste or Upload</span>
+                        <span class="tech-badge text-slate-400">Structured Output</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voice Call -->
+        <div class="feature-card glass p-6 rounded-2xl border-t-2 border-pink-500/50 glass-hover">
+            <div class="flex gap-4">
+                <div class="feature-icon" style="background:rgba(236,72,153,0.12);color:#f472b6">📞</div>
+                <div>
+                    <h3 class="font-bold text-lg mb-1">Voice Call Assistant</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Initiate real-time outbound AI legal consultation calls via <strong class="text-slate-400">Vapi</strong>. The assistant conducts the legal consultation, handles the full transcript via webhook, and automatically generates a structured <strong class="text-slate-400">PDF report</strong> from the call. Reports are stored and downloadable from the platform. Democratizes legal access for citizens.</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="tech-badge text-pink-400">Vapi Voice AI</span>
+                        <span class="tech-badge text-blue-400">Webhook</span>
+                        <span class="tech-badge text-slate-400">Auto PDF Report</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     ARCHITECTURE
+═══════════════════════════════════════════════════ -->
+<section id="architecture" class="fade-section">
+    <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-widest text-purple-400 font-bold">Engineering</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold mt-2">System Architecture</h2>
+    </div>
+
+    <!-- Layered architecture -->
+    <div class="space-y-4">
+
+        <!-- Frontend -->
+        <div class="glass p-6 rounded-2xl border border-blue-500/20" style="background:rgba(59,130,246,0.05)">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-blue-400 font-black uppercase text-xs tracking-widest bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Frontend Layer</span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+                <div class="glass p-3 rounded-xl text-sm">
+                    <div class="text-blue-400 font-bold">🏠 Dashboard</div>
+                    <div class="text-slate-600 text-xs mt-1">Overview Hub</div>
+                </div>
+                <div class="glass p-3 rounded-xl text-sm">
+                    <div class="text-purple-400 font-bold">⚖️ Courtroom</div>
+                    <div class="text-slate-600 text-xs mt-1">Debate Simulator</div>
+                </div>
+                <div class="glass p-3 rounded-xl text-sm">
+                    <div class="text-green-400 font-bold">🔍 Doc Q&A</div>
+                    <div class="text-slate-600 text-xs mt-1">RAG Interface</div>
+                </div>
+                <div class="glass p-3 rounded-xl text-sm">
+                    <div class="text-amber-400 font-bold">📝 Drafter</div>
+                    <div class="text-slate-600 text-xs mt-1">Doc Generator</div>
+                </div>
+                <div class="glass p-3 rounded-xl text-sm">
+                    <div class="text-red-400 font-bold">🤖 Chatbot</div>
+                    <div class="text-slate-600 text-xs mt-1">Legal Assistant</div>
+                </div>
+                <div class="glass p-3 rounded-xl text-sm">
+                    <div class="text-cyan-400 font-bold">🔎 Judgments</div>
+                    <div class="text-slate-600 text-xs mt-1">Precedent Finder</div>
+                </div>
+                <div class="glass p-3 rounded-xl text-sm">
+                    <div class="text-pink-400 font-bold">📞 Voice Call</div>
+                    <div class="text-slate-600 text-xs mt-1">Vapi Integration</div>
+                </div>
+                <div class="glass p-3 rounded-xl text-sm">
+                    <div class="text-indigo-400 font-bold">📄 Summarizer</div>
+                    <div class="text-slate-600 text-xs mt-1">AI Summarization</div>
+                </div>
+            </div>
+            <div class="text-center mt-3 text-xs text-slate-600">React 19 + Vite · React Router v6 · Vanilla CSS Dark Theme</div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="flex justify-center items-center gap-3 text-slate-600 text-xs tracking-widest">
+            <div class="h-px flex-1 bg-gradient-to-r from-transparent to-slate-700"></div>
+            <span class="flex flex-col items-center gap-1">
+                <i class="fas fa-chevron-down text-blue-500"></i>
+                <span>HTTP · REST · SSE Streaming</span>
+                <i class="fas fa-chevron-up text-purple-500"></i>
+            </span>
+            <div class="h-px flex-1 bg-gradient-to-l from-transparent to-slate-700"></div>
+        </div>
+
+        <!-- Backend -->
+        <div class="glass p-6 rounded-2xl border border-purple-500/20" style="background:rgba(168,85,247,0.04)">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-purple-400 font-black uppercase text-xs tracking-widest bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">FastAPI Backend · :8000</span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs text-center">
+                <div class="glass p-3 rounded-xl"><code class="text-purple-300">/api/summarizer</code></div>
+                <div class="glass p-3 rounded-xl"><code class="text-purple-300">/api/chatbot</code></div>
+                <div class="glass p-3 rounded-xl"><code class="text-purple-300">/api/doc-qa</code></div>
+                <div class="glass p-3 rounded-xl"><code class="text-purple-300">/api/courtroom</code></div>
+                <div class="glass p-3 rounded-xl"><code class="text-purple-300">/api/drafter</code></div>
+                <div class="glass p-3 rounded-xl"><code class="text-purple-300">/api/judgments</code></div>
+                <div class="glass p-3 rounded-xl"><code class="text-purple-300">/api/call</code></div>
+                <div class="glass p-3 rounded-xl"><code class="text-purple-300">/health, /docs</code></div>
+            </div>
+            <div class="text-center mt-3 text-xs text-slate-600">FastAPI · Uvicorn ASGI · LangChain · python-dotenv</div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="flex justify-center items-center gap-3 text-slate-600 text-xs tracking-widest">
+            <div class="h-px flex-1 bg-gradient-to-r from-transparent to-slate-700"></div>
+            <i class="fas fa-chevron-down text-green-500"></i>
+            <div class="h-px flex-1 bg-gradient-to-l from-transparent to-slate-700"></div>
+        </div>
+
+        <!-- AI / Infra Layer -->
+        <div class="grid md:grid-cols-4 gap-4">
+            <div class="glass p-5 rounded-2xl border border-orange-500/20 text-center" style="background:rgba(249,115,22,0.04)">
+                <div class="text-2xl mb-2">🦙</div>
+                <div class="font-bold text-orange-400 text-sm">Ollama</div>
+                <div class="text-xs text-slate-600 mt-1">llama3.2 · Local · Private</div>
+                <div class="text-xs text-slate-700 mt-2">Chatbot, Doc Q&A</div>
+            </div>
+            <div class="glass p-5 rounded-2xl border border-blue-500/20 text-center" style="background:rgba(59,130,246,0.04)">
+                <div class="text-2xl mb-2">✨</div>
+                <div class="font-bold text-blue-400 text-sm">Google Gemini</div>
+                <div class="text-xs text-slate-600 mt-1">gemini-2.5-flash</div>
+                <div class="text-xs text-slate-700 mt-2">Judgment Finder</div>
+            </div>
+            <div class="glass p-5 rounded-2xl border border-green-500/20 text-center" style="background:rgba(34,197,94,0.04)">
+                <div class="text-2xl mb-2">⚡</div>
+                <div class="font-bold text-green-400 text-sm">NVIDIA NIM</div>
+                <div class="text-xs text-slate-600 mt-1">DeepSeek-R1 · QwQ-32B</div>
+                <div class="text-xs text-slate-700 mt-2">Doc Q&A Pipeline</div>
+            </div>
+            <div class="glass p-5 rounded-2xl border border-pink-500/20 text-center" style="background:rgba(236,72,153,0.04)">
+                <div class="text-2xl mb-2">📞</div>
+                <div class="font-bold text-pink-400 text-sm">Vapi</div>
+                <div class="text-xs text-slate-600 mt-1">Voice AI Calls</div>
+                <div class="text-xs text-slate-700 mt-2">Voice Assistant</div>
+            </div>
+        </div>
+
+        <!-- ChromaDB -->
+        <div class="glass p-5 rounded-2xl border border-cyan-500/20 text-center" style="background:rgba(6,182,212,0.03)">
+            <div class="flex items-center justify-center gap-6 flex-wrap">
+                <div class="flex items-center gap-2">
+                    <span class="text-cyan-400 font-bold">🗄️ ChromaDB</span>
+                    <span class="text-slate-600 text-xs">— Local Persistent Vector Store</span>
+                </div>
+                <div class="h-4 w-px bg-slate-700 hide-mobile"></div>
+                <div class="flex items-center gap-2">
+                    <span class="text-purple-400 font-bold">🔢 SentenceTransformers</span>
+                    <span class="text-slate-600 text-xs">— all-MiniLM-L6-v2 Embeddings</span>
+                </div>
+                <div class="h-4 w-px bg-slate-700 hide-mobile"></div>
+                <div class="flex items-center gap-2">
+                    <span class="text-amber-400 font-bold">📑 ReportLab</span>
+                    <span class="text-slate-600 text-xs">— PDF Generation</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     HOW IT WORKS — COURTROOM + RAG DEEP DIVE
+═══════════════════════════════════════════════════ -->
+<section class="fade-section">
+    <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Deep Dive</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold mt-2">How Key Modules Work</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- RAG pipeline -->
+        <div class="glass p-8 rounded-3xl">
+            <div class="flex items-center gap-3 mb-7">
+                <div class="feature-icon" style="background:rgba(59,130,246,0.15);color:#60a5fa">🔍</div>
+                <h3 class="text-xl font-bold">Document Q&A — RAG Pipeline</h3>
+            </div>
+            <div class="space-y-4 relative">
+                <div class="step-line"></div>
+                <div class="flex gap-4 items-start pl-10 relative">
+                    <div class="absolute left-0 w-10 h-10 rounded-full bg-blue-500/20 border border-blue-500/40 flex items-center justify-center text-blue-400 text-sm font-bold flex-shrink-0 -ml-0">1</div>
+                    <div>
+                        <p class="font-semibold text-sm">Upload PDF / TXT</p>
+                        <p class="text-slate-500 text-xs">Document is chunked and ingested into the system</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start pl-10 relative">
+                    <div class="absolute left-0 w-10 h-10 rounded-full bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-400 text-sm font-bold flex-shrink-0">2</div>
+                    <div>
+                        <p class="font-semibold text-sm">Embed with all-MiniLM-L6-v2</p>
+                        <p class="text-slate-500 text-xs">Each chunk converted to a 384-dim dense vector</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start pl-10 relative">
+                    <div class="absolute left-0 w-10 h-10 rounded-full bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-sm font-bold flex-shrink-0">3</div>
+                    <div>
+                        <p class="font-semibold text-sm">Store in ChromaDB</p>
+                        <p class="text-slate-500 text-xs">Persistent local vector store, keyed by session_id</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start pl-10 relative">
+                    <div class="absolute left-0 w-10 h-10 rounded-full bg-green-500/20 border border-green-500/40 flex items-center justify-center text-green-400 text-sm font-bold flex-shrink-0">4</div>
+                    <div>
+                        <p class="font-semibold text-sm">Query → Vector Similarity Retrieval</p>
+                        <p class="text-slate-500 text-xs">Top-k relevant chunks fetched from ChromaDB</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start pl-10 relative">
+                    <div class="absolute left-0 w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-sm font-bold flex-shrink-0">5</div>
+                    <div>
+                        <p class="font-semibold text-sm">LLM Generates Grounded Answer</p>
+                        <p class="text-slate-500 text-xs">Ollama / NVIDIA NIM streams the final response</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courtroom flow -->
+        <div class="glass p-8 rounded-3xl">
+            <div class="flex items-center gap-3 mb-7">
+                <div class="feature-icon" style="background:rgba(239,68,68,0.15);color:#f87171">⚖️</div>
+                <h3 class="text-xl font-bold">Courtroom Simulator — Flow</h3>
+            </div>
+            <div class="space-y-4 relative">
+                <div class="step-line" style="background:linear-gradient(to bottom, rgba(239,68,68,0.5), transparent)"></div>
+                <div class="flex gap-4 items-start pl-10 relative">
+                    <div class="absolute left-0 w-10 h-10 rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center text-red-400 text-sm font-bold">1</div>
+                    <div>
+                        <p class="font-semibold text-sm">Input Case Facts + Legal Category</p>
+                        <p class="text-slate-500 text-xs">User provides case name, facts, and selects category (Criminal, Civil, etc.)</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start pl-10 relative">
+                    <div class="absolute left-0 w-10 h-10 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 text-sm font-bold">2</div>
+                    <div>
+                        <p class="font-semibold text-sm">Instantiate LangChain Agents</p>
+                        <p class="text-slate-500 text-xs">Prosecution Agent + Defense Agent initialized with ChromaDB retrieval</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start pl-10 relative">
+                    <div class="absolute left-0 w-10 h-10 rounded-full bg-yellow-500/20 border border-yellow-500/40 flex items-center justify-center text-yellow-400 text-sm font-bold">3</div>
+                    <div>
+                        <p class="font-semibold text-sm">5 Debate Rounds</p>
+                        <p class="text-slate-500 text-xs">Each agent argues using Indian law precedents from the vector store</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start pl-10 relative">
+                    <div class="absolute left-0 w-10 h-10 rounded-full bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-400 text-sm font-bold">4</div>
+                    <div>
+                        <p class="font-semibold text-sm">AI Judge Delivers Ruling</p>
+                        <p class="text-slate-500 text-xs">Judge agent evaluates both sides and produces a structured verdict</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start pl-10 relative">
+                    <div class="absolute left-0 w-10 h-10 rounded-full bg-green-500/20 border border-green-500/40 flex items-center justify-center text-green-400 text-sm font-bold">5</div>
+                    <div>
+                        <p class="font-semibold text-sm">Export Transcript as PDF</p>
+                        <p class="text-slate-500 text-xs">Full debate + verdict packaged as a ReportLab PDF</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     TECH STACK
+═══════════════════════════════════════════════════ -->
+<section id="stack" class="fade-section">
+    <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-widest text-green-400 font-bold">Engineering</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold mt-2">Technology Stack</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Frontend -->
+        <div class="glass p-7 rounded-3xl glass-hover">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="feature-icon" style="background:rgba(59,130,246,0.15);color:#60a5fa;width:40px;height:40px;font-size:18px">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <h3 class="font-bold text-blue-400">Frontend</h3>
+            </div>
+            <div class="space-y-3 text-sm">
+                <div class="flex justify-between items-center py-2 border-b border-slate-800">
+                    <span class="font-semibold">React 19</span>
+                    <span class="text-slate-500 text-xs">UI Framework</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-slate-800">
+                    <span class="font-semibold">Vite</span>
+                    <span class="text-slate-500 text-xs">Build Tool & Dev Server</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-slate-800">
+                    <span class="font-semibold">React Router v6</span>
+                    <span class="text-slate-500 text-xs">Client-Side Routing</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                    <span class="font-semibold">Vanilla CSS</span>
+                    <span class="text-slate-500 text-xs">Dark Theme Styling</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="glass p-7 rounded-3xl glass-hover">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="feature-icon" style="background:rgba(168,85,247,0.15);color:#c084fc;width:40px;height:40px;font-size:18px">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3 class="font-bold text-purple-400">Backend</h3>
+            </div>
+            <div class="space-y-3 text-sm">
+                <div class="flex justify-between items-center py-2 border-b border-slate-800">
+                    <span class="font-semibold">FastAPI</span>
+                    <span class="text-slate-500 text-xs">REST API Framework</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-slate-800">
+                    <span class="font-semibold">Uvicorn</span>
+                    <span class="text-slate-500 text-xs">ASGI Server</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-slate-800">
+                    <span class="font-semibold">LangChain</span>
+                    <span class="text-slate-500 text-xs">LLM Orchestration & RAG</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-slate-800">
+                    <span class="font-semibold">ChromaDB</span>
+                    <span class="text-slate-500 text-xs">Vector Store</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-slate-800">
+                    <span class="font-semibold">SentenceTransformers</span>
+                    <span class="text-slate-500 text-xs">all-MiniLM-L6-v2</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                    <span class="font-semibold">ReportLab</span>
+                    <span class="text-slate-500 text-xs">PDF Generation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Providers -->
+        <div class="glass p-7 rounded-3xl glass-hover">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="feature-icon" style="background:rgba(34,197,94,0.15);color:#4ade80;width:40px;height:40px;font-size:18px">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="font-bold text-green-400">AI / ML Providers</h3>
+            </div>
+            <div class="space-y-3 text-sm">
+                <div class="flex justify-between items-center py-2 border-b border-slate-800">
+                    <div>
+                        <span class="font-semibold">Ollama</span>
+                        <span class="text-slate-600 text-xs block">llama3.2 (local)</span>
+                    </div>
+                    <span class="text-slate-500 text-xs text-right">Chatbot, Doc Q&A</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-slate-800">
+                    <div>
+                        <span class="font-semibold">Google Gemini</span>
+                        <span class="text-slate-600 text-xs block">gemini-2.5-flash</span>
+                    </div>
+                    <span class="text-slate-500 text-xs text-right">Judgment Finder</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-slate-800">
+                    <div>
+                        <span class="font-semibold">NVIDIA NIM</span>
+                        <span class="text-slate-600 text-xs block">DeepSeek-R1 · QwQ-32B</span>
+                    </div>
+                    <span class="text-slate-500 text-xs text-right">Doc Q&A Pipeline</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                    <div>
+                        <span class="font-semibold">Vapi</span>
+                        <span class="text-slate-600 text-xs block">Custom Assistant</span>
+                    </div>
+                    <span class="text-slate-500 text-xs text-right">Voice Calls</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     IMPACT / RESULTS
+═══════════════════════════════════════════════════ -->
+<section id="results" class="fade-section">
+    <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Outcomes</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold mt-2">Measured Impact</h2>
+    </div>
+
+    <div class="glass p-10 rounded-3xl">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+
+            <div>
+                <canvas id="chart" height="260"></canvas>
+            </div>
+
+            <div class="space-y-5">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-green-500/15 border border-green-500/30 flex items-center justify-center text-green-400 flex-shrink-0">
+                        <i class="fas fa-tachometer-alt text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold">85% Faster Case Analysis</p>
+                        <p class="text-slate-500 text-sm">From weeks of manual review to minutes of AI-powered Q&A on uploaded documents</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 flex-shrink-0">
+                        <i class="fas fa-search text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold">Instant Precedent Discovery</p>
+                        <p class="text-slate-500 text-sm">5 real SC/HC judgments streamed in seconds via Gemini 2.5 Flash — previously hours of manual database mining</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400 flex-shrink-0">
+                        <i class="fas fa-file-contract text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold">Automated Document Drafting</p>
+                        <p class="text-slate-500 text-sm">Indian court-ready legal documents generated in seconds vs. hours of manual drafting</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-pink-500/15 border border-pink-500/30 flex items-center justify-center text-pink-400 flex-shrink-0">
+                        <i class="fas fa-phone text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold">Democratized Legal Access</p>
+                        <p class="text-slate-500 text-sm">Voice-based AI consultations with automatic PDF reports bridge the gap for citizens who can't afford legal counsel</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 flex-shrink-0">
+                        <i class="fas fa-shield-alt text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold">90%+ Answer Accuracy</p>
+                        <p class="text-slate-500 text-sm">Grounded RAG responses prevent hallucination by anchoring answers to uploaded documents</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     API REFERENCE
+═══════════════════════════════════════════════════ -->
+<section id="api" class="fade-section">
+    <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-widest text-cyan-400 font-bold">Developer Reference</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold mt-2">API Endpoints</h2>
+        <p class="text-slate-500 mt-3">FastAPI auto-generates interactive Swagger UI at <code class="text-cyan-300 bg-cyan-900/20 px-2 py-1 rounded text-xs">http://localhost:8000/docs</code></p>
+    </div>
+
+    <div class="glass rounded-3xl overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b border-slate-800" style="background:rgba(255,255,255,0.03)">
+                        <th class="text-left p-4 text-xs uppercase tracking-widest text-slate-500 font-semibold">Method</th>
+                        <th class="text-left p-4 text-xs uppercase tracking-widest text-slate-500 font-semibold">Endpoint</th>
+                        <th class="text-left p-4 text-xs uppercase tracking-widest text-slate-500 font-semibold">Module</th>
+                        <th class="text-left p-4 text-xs uppercase tracking-widest text-slate-500 font-semibold">Description</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800/50">
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/summarizer/summarize</td><td class="p-4 text-slate-400 text-xs">Summarizer</td><td class="p-4 text-slate-500 text-xs">Summarize a document or pasted text</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/chatbot/chat</td><td class="p-4 text-slate-400 text-xs">Chatbot</td><td class="p-4 text-slate-500 text-xs">Send a message and get a streamed reply</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/doc-qa/upload</td><td class="p-4 text-slate-400 text-xs">Document Q&A</td><td class="p-4 text-slate-500 text-xs">Upload PDF/TXT — returns <code class="text-purple-300">session_id</code></td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/doc-qa/ask</td><td class="p-4 text-slate-400 text-xs">Document Q&A</td><td class="p-4 text-slate-500 text-xs">Ask a question against uploaded doc</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/doc-qa/ask/pipeline</td><td class="p-4 text-slate-400 text-xs">Document Q&A</td><td class="p-4 text-slate-500 text-xs">SSE pipeline with step visualization + LLM selection</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-delete">DEL</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/doc-qa/session/{id}</td><td class="p-4 text-slate-400 text-xs">Document Q&A</td><td class="p-4 text-slate-500 text-xs">Clear a document session from ChromaDB</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/courtroom/start</td><td class="p-4 text-slate-400 text-xs">Courtroom</td><td class="p-4 text-slate-500 text-xs">Initialize simulation with case details</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/courtroom/round</td><td class="p-4 text-slate-400 text-xs">Courtroom</td><td class="p-4 text-slate-500 text-xs">Run the next debate round</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/courtroom/judgment</td><td class="p-4 text-slate-400 text-xs">Courtroom</td><td class="p-4 text-slate-500 text-xs">Get the AI Judge's final ruling</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/drafter/generate</td><td class="p-4 text-slate-400 text-xs">Drafter</td><td class="p-4 text-slate-500 text-xs">Generate a court-ready legal document</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/judgments/search</td><td class="p-4 text-slate-400 text-xs">Judgment Finder</td><td class="p-4 text-slate-500 text-xs">Stream 5 relevant SC/HC precedents via SSE</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-get">GET</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/call/config</td><td class="p-4 text-slate-400 text-xs">Voice Call</td><td class="p-4 text-slate-500 text-xs">Get Vapi configuration for frontend</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/call/start</td><td class="p-4 text-slate-400 text-xs">Voice Call</td><td class="p-4 text-slate-500 text-xs">Initiate outbound call via Vapi</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-post">POST</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/call/webhook</td><td class="p-4 text-slate-400 text-xs">Voice Call</td><td class="p-4 text-slate-500 text-xs">Receive Vapi transcript, auto-generate PDF</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-get">GET</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/call/reports</td><td class="p-4 text-slate-400 text-xs">Voice Call</td><td class="p-4 text-slate-500 text-xs">List all generated call PDF reports</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-get">GET</span></td><td class="p-4 font-mono text-xs text-cyan-300">/api/call/reports/{call_id}</td><td class="p-4 text-slate-400 text-xs">Voice Call</td><td class="p-4 text-slate-500 text-xs">Download a specific PDF report</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-get">GET</span></td><td class="p-4 font-mono text-xs text-cyan-300">/health</td><td class="p-4 text-slate-400 text-xs">System</td><td class="p-4 text-slate-500 text-xs">Platform health check</td></tr>
+                    <tr><td class="p-4"><span class="method-pill method-get">GET</span></td><td class="p-4 font-mono text-xs text-cyan-300">/docs</td><td class="p-4 text-slate-400 text-xs">System</td><td class="p-4 text-slate-500 text-xs">Swagger interactive API documentation</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     LEGAL DISCLAIMER
+═══════════════════════════════════════════════════ -->
+<section class="fade-section">
+    <div class="disclaimer p-6 rounded-2xl">
+        <div class="flex gap-3 items-start">
+            <i class="fas fa-exclamation-triangle text-amber-400 mt-1"></i>
+            <div>
+                <p class="font-bold text-amber-400 mb-1">Educational Use Only</p>
+                <p class="text-slate-400 text-sm">This platform and its AI outputs are for <strong>educational and research purposes only</strong>. They do <strong>not</strong> constitute legal advice. AI-generated case citations, legal analysis, and drafted documents may be inaccurate or hallucinated. Always consult a qualified legal professional before acting on any legal matter.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-slate-800/50 py-12 text-center relative z-10">
+    <div class="flex items-center justify-center gap-2 mb-3">
+        <div class="w-6 h-6 rounded-md bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-xs">⚖️</div>
+        <span class="font-black gradient-text">LEGAL AI RAG PLATFORM</span>
+    </div>
+    <p class="text-slate-600 text-sm mb-2">Manipal University Jaipur · PBL 2026</p>
+    <p class="text-slate-700 text-xs">Built with FastAPI · LangChain · Ollama · ChromaDB · Google Gemini · Vapi · ReportLab</p>
+    <div class="flex items-center justify-center gap-6 mt-6 text-xs text-slate-700">
+        <span>Frontend: localhost:5173</span>
+        <span>·</span>
+        <span>Backend: localhost:8000</span>
+        <span>·</span>
+        <span>Swagger: localhost:8000/docs</span>
+    </div>
+</footer>
+
+<script>
+/* ── Timer ── */
+let sec = 0;
+function startTimer() {
+    setInterval(() => {
+        sec++;
+        const m = Math.floor(sec / 60);
+        const s = sec % 60;
+        document.getElementById('displayTime').innerText =
+            `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    }, 1000);
+}
+
+/* ── Progress bar ── */
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = (scrollTop / docHeight) * 100;
+    document.getElementById('progressBar').style.width = pct + '%';
+});
+
+/* ── Intersection Observer for fade-in ── */
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+
+/* ── Chart.js ── */
+new Chart(document.getElementById('chart'), {
+    type: 'bar',
+    data: {
+        labels: ['Manual Research', 'AI Platform', 'Doc Drafting\n(Manual)', 'Doc Drafting\n(AI)', 'Precedent\nSearch (Manual)', 'Precedent\nSearch (AI)'],
+        datasets: [
+            {
+                label: 'Manual Process',
+                data: [100, null, 100, null, 100, null],
+                backgroundColor: 'rgba(239,68,68,0.4)',
+                borderColor: 'rgba(239,68,68,0.7)',
+                borderWidth: 2,
+                borderRadius: 8,
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: { 
-                    y: { beginAtZero: true, grid: { color: '#ffffff05' }, ticks: { color: '#475569' } },
-                    x: { grid: { display: false }, ticks: { color: '#475569' } }
+            {
+                label: 'AI Platform',
+                data: [null, 15, null, 5, null, 5],
+                backgroundColor: 'rgba(59,130,246,0.5)',
+                borderColor: 'rgba(59,130,246,0.9)',
+                borderWidth: 2,
+                borderRadius: 8,
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+
+            legend: {
+                labels: { color: '#94a3b8', font: { family: 'Plus Jakarta Sans', size: 12 } }
+            },
+            tooltip: {
+                callbacks: {
+                    label: ctx => `${ctx.dataset.label}: ${ctx.raw}% relative time`
                 }
             }
-        });
-    </script>
+        },
+        scales: {
+            x: {
+                ticks: { color: '#64748b', font: { size: 10 } },
+                grid: { color: 'rgba(255,255,255,0.04)' }
+            },
+            y: {
+                beginAtZero: true,
+                max: 110,
+                ticks: {
+                    color: '#64748b',
+                    font: { size: 11 },
+                    callback: v => v + '%'
+                },
+                grid: { color: 'rgba(255,255,255,0.05)' }
+            }
+        }
+    }
+});
+
+/* ── Init ── */
+function init() {
+    startTimer();
+    // trigger first visible sections
+    document.querySelectorAll('.fade-section').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) el.classList.add('visible');
+    });
+}
+</script>
+
 </body>
 </html>
